@@ -1,0 +1,18 @@
+#!/bin/sh
+
+FILE=${1}
+
+accessed=$(stat -c %X $FILE)
+currentTime=$(date +%s)
+
+if [ $(( $currentTime - $accessed )) -le 120 ]
+then
+    exit 0
+else
+    exit 1
+fi
+
+
+
+
+ 
